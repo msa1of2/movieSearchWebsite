@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Movie Login</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='loginStyles.css') }}" />
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon.png">
+	
+</head>
+<body>
+	<div>
+		<form action="/api/login" method="POST" enctype="application/json">
+			<label for='loginType'>Choose login type</label>
+			<select name='loginType', id='loginType'>
+				<option value='admin'>Admin</option>
+			</select>
+		
+			<label for="username">Username</label>
+			<input type="username" id="username" name="username" autocomplete="username" required>
+
+			<label for="password">Password</label>
+			<input type="password" id="password" name="password" autocomplete="current-password" required>
+<spacer></spacer>
+			<button type="submit">Log In</button>
+		</form>
+	</div>
+</body>

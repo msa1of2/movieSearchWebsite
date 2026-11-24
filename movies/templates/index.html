@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Movie Search</title>
+	<link rel="stylesheet" href="static/styles.css" />
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon.png">
+	
+</head>
+<body>
+	<div class="loader" id="loader">
+		<div class="spinner"></div>
+	</div>
+	<div class="parent-container" id="search-container">
+		<input id="search" type="search" placeholder="Search"/>
+		<button id="search-button" style="margin-left:3px">Search</button>
+		<div style="margin-left:10px">
+			<input id="append-table" type='checkbox' name='append' />
+			<label for='append-table'>Append results to end of table</label>
+		</div>
+	</div>
+	<div class="fieldset-wrapper" id="searchTypes">
+		<fieldset class="parent-container">
+			<legend>Search Types</legend>
+			<div style="width:auto;margin-left:auto;margin-right:auto;">
+				<input id="allSearchTypes" type="checkbox" checked/>
+				<label for="allSearchTypes">Toggle All</label>
+			</div>
+			<div class="margin-children" style="display:flex;flex-wrap:wrap;width:fit-content;">
+				<div class="parent-container">
+					<input id="stTitle" type="checkbox" name="title" checked />
+					<label for="stTitle">Title</label>
+				</div>
+
+				<div class="center">
+					<input id="stActor" type="checkbox" name="actor" checked />
+					<label for="stActor">Actor</label>
+				</div>
+				
+				<div class="parent-container">
+					<input id="stDirector" type="checkbox" name="director" checked />
+					<label for="stDirector">Director</label>
+				</div>
+				
+				<div class="parent-container">
+					<input id="stGenre" type="checkbox" name="genre" checked />
+					<label for="stGenre">Genre</label>
+				</div>
+				<div class="parent-container">
+					<input id="stStudio" type="checkbox" name="studio" checked />
+					<label for="stStudio">Studio</label>
+				</div>
+				<div class="parent-container">
+					<input id="stTagline" type="checkbox" name="tagline" checked />
+					<label for="stTagline">Tagline</label>
+				</div>
+				<div class="parent-container">
+					<input id="stYear" type="checkbox" name="year" checked />
+					<label for="stYear">Year</label>
+				</div>
+				<div class="parent-container">
+					<input id="stId" type="checkbox" name="id" checked />
+					<label for="stId">Id</label>
+				</div>
+				<div class="parent-container">
+					<input id="stCountry" type="checkbox" name="country" checked />
+					<label for="stCountry">Country</label>
+				</div>
+				<div class="parent-container">
+					<input id="stFranchise" type="checkbox" name="franchise" checked />
+					<label for="stFranchise">Franchise</label>
+				</div>
+				<div class="parent-container">
+					<input id="stLocation" type="checkbox" name="loc" checked />
+					<label for="stLocation">Location</label>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+	<div class="fieldset-wrapper" id="filters">
+		<fieldset class="parent-container" id="fieldsetFilters">
+			<legend>Search Filters</legend>
+			<div id="mpaaRating">
+				<label for="stMpaaRating">*mpaa<br>Film Rating</label>
+				<div>
+					<input id="allFiltersToggle" type="checkbox" checked />
+					<label for="allFiltersToggle">Toggle All</label>
+				</div>
+				<div>
+					<input id="mpaaStNotRated" type="checkbox" name="Not Rated" checked/>
+					<label for="mpaaStNotRated">Not Rated</label>
+				</div>
+				<div>
+					<input id="mpaaStG" type="checkbox" name="G" checked />
+					<label for="mpaaStG">G - General Audiences</label>
+				</div>
+				<div>
+					<input id="mpaaStPG" type="checkbox" name="PG" checked />
+					<label for="mpaaStPG">PG - Parental Guidance Suggested</label>
+				</div>
+				<div>
+					<input id="mpaaStPG13" type="checkbox" name="PG-13" checked />
+					<label for="mpaaStPG13">PG-13 - Parents Strongly Cautioned</label>
+				</div>
+				<div>
+					<input id="mpaaStR" type="checkbox" name="R" checked />
+					<label for="mpaaStR">R - Restricted</label>
+				</div>
+				<div>
+					<input id="mpaaStX" type="checkbox" name="X" checked/>
+					<label for=mpaaStX">X - Strictly for adults</label>
+				</div>
+			</div>
+			<div id="codec">
+				<label for="coedc">*code<br>Codec Type</label>
+				<div>
+					<input id="allCodecsToggle" type="checkbox" checked />
+					<label for="allCodecsToggle">Toggle All</label>
+				</div>
+			</div>
+			<div>
+				<label for="stMetascore">*meta<br>Metascore (0 - 100):</label>
+				<div id="stMetascore" style="display:flex;flex-direction:row">
+					<div style="display:flex;flex-direction:column;">
+						<input type="number" id="stMetascoreMin" name="metascoreMin" min="0" max = "100" value="0"/>
+						<label for="stMetascoreMin">Min</label>
+					</div>
+					<div style="display:flex;flex-direction:column;">
+						<input type="number" id="stMetascoreMax" name="metascoreMax" min="0" max="100" value="100"/>
+						<label for="stMetascoreMax">Max</label>
+					</div>
+				</div>
+			</div>
+			<div>
+				<label for="stRating">*rate<br>Rating (0.0 - 10.0):</label>
+				<div id="stRating" style="display:flex;flex-direction:row">
+					<div style="display:flex;flex-direction:column;">
+						<input type="number" id="stRatingMin" name="ratingMin" min="0" max = "10" value="0" step="0.1"/>
+						<label for="stRatingMin">Min</label>
+					</div>
+					<div style="display:flex;flex-direction:column;">
+						<input type="number" id="stRatingMax" name="ratingMax" min="0" max="10" value="10" step="0.1"/>
+						<label for="stRatingMax">Max</label>
+					</div>
+				</div>
+			</div>
+			<div>
+				<label for="stRuntime">*time<br>Runtime (Minutes):</label>
+				<div id="stRuntime"  style="display:flex;flex-direction:row">
+					<div style="display:flex;flex-direction:column;">
+						<input type="number" id="stRuntimeMin" name="runtimeMin" min="0" max = "1440" value="0" step="1"/>
+						<label for="stRuntimeMin">Min</label>
+						<label for="stRuntimeMin" id="runtimeMinLabel">0 hr 0 min</label>
+					</div>
+					<div style="display:flex;flex-direction:column;">
+						<input type="number" id="stRuntimeMax" name="runtimeMax" min="0" max="1440" value="1440" step="1"/>
+						<label for="stRuntimeMax">Max</label>
+						<label for="stRuntimeMax" id="runtimeMaxLabel">24 hr 0 min</label>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+	<table id="output" style="width: 100%;table-layout: auto;" class="clickable-table">
+		<caption>Search Results</caption>
+		<button id="clear">Clear Table</button>
+		<thread>
+			<tr class="header" style="text-align:left;">
+				<th scope='col'>Title</th>
+				<th scope='col'>Location</th>
+				<th scope='col'>Source</th>
+			</tr>
+		</thread>
+		<tbody>
+			<tr class = "void">
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+		</tbody>
+	</table>
+	<div id="focused-movie">
+		<div style="display:flex;">
+			<h1 id="title" style="max-witdth:fit-content">Title</h1>
+			<button id="close-button" style="height:fit-content;">&times;</button>
+		</div>
+		<div id="scrollable">
+			<h2 id="rating" class="center-text">Rating 0-10</h2>
+			<h2 id="metascore" class="center-text">Metascore 0-100</h2>
+			<div style="max-width:fit-content;">
+				
+				
+			</div>
+			<h3 id="tagline">Tagline</h3>
+			<h2 id="runtime">RunTime</h2>
+			<h2 id="year">Year</h2>
+			<h2 id="certification">Mpaa Rating</h2>
+			<h2 id="codecDisplay">Codec<h2>
+			
+			<details id="director">
+				<summary>Director</summary>
+				<ul>
+				</ul>
+			</details>
+			<details id="actor">
+				<summary>Actors</summary>
+				<ul>
+				</ul>
+			</details>
+			<details id="writers">
+				<summary>Writers</summary>
+				<ul>
+				</ul>
+			</details>
+			<details id="guestStars">
+				<summary>Guest Stars</summary>
+				<ul>
+				</ul>
+			</details>
+			<details id="genre">
+				<summary>Genres</summary>
+				<ul>
+				</ul>
+			</details>
+			<details id="country">
+				<summary>Country</summary>
+				<ul>
+				</ul>
+			</details>
+			<details id="studio">
+				<summary>Studios</summary>
+				<ul>
+				</ul>
+			</details>
+			<details id="show-info">
+				<summary>Show Info</summary>
+				<ul></ul>
+			</details>
+			<h4 id="id">ID Code</h4>
+		</div>
+	</div>
+	<div style="display:flex;max-width:fit-content;margin-left:auto;margin-right:auto;">
+		<input id="index-movies" />
+		<label for='index-movies' style="margin-left:3px">Reindex password</label>
+	</div>
+	<label style="display:flex;max-width:fit-content;margin-left:auto;margin-right:auto;" id='lastIndex'>No index time stored</label>
+	<script src="static/script.js"></script>
+</body>
+</html>

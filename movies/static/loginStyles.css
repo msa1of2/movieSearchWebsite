@@ -1,0 +1,65 @@
+:root{
+	--off-color:#b0b0b0;
+	--bkg-color:#606060;
+	--frg-color:#ffffff;
+	--off-bkg-color:#202020
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+body {
+	/*background-color: gray;*/
+/*	margin: 10 auto;
+justify-content: auto;*/
+	justify-content: center;
+	display:flex;
+}
+div{
+	display: flex;
+	
+	align-items: center;
+	justify-content:center;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:auto;
+	margin-bottom:auto;
+	/*max-width: fit-content;*/
+	
+	width: 90dvw;       /* 90% of the viewport width */
+	height: 90dvh;
+}
+div form{
+	flex-direction:column;
+	display:flex;
+}
+div form *{
+	padding:5px;
+	
+}
+label, select{
+	
+	text-align:center;
+}
+label{
+	color:black;
+	font-weight: bold;
+	-webkit-text-stroke: 0.014em gray; 
+}
+body {
+  /* Animate over 10 seconds, infinitely, in a linear progression */
+  animation: hueLoop 25s linear infinite;
+}
+
+@keyframes hueLoop {
+  0% {
+    background-color: hsl(0, 60%, 50%);
+  }
+  50% {
+    background-color:hsl(180, 60%, 50%);
+  }
+  100% {
+    background-color: hsl(360, 60%, 50%);
+  }
+}
+

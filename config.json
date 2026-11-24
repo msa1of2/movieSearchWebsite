@@ -1,0 +1,19 @@
+{
+	"write location": "/var/www/movieSearchWebsite/movies/data/",
+	"movie directory": "/mnt/d/Movies/",
+	"movie prefix": "Movies",
+	"codec grabbing": ["/mnt/d/Movies/", "/mnt/d/Series/"],
+	"_franchise comment": "when looking through directories, these file extensions will not be added to the franchise list",
+	"franchise ignore": [	".tgmd",
+				".jpg",
+				".srt",
+				".sub",
+				".idx",
+				".exe",
+				".txt",
+				".nfo"],
+	"franchise location": "/var/www/movieSearchWebsite/franchisesToAdd.mda",
+	"data extension": ".tgmd",
+	"codec extensions": [".mp4", ".mov", ".mkv", ".avi", ".divx", ".m4v"],
+	"tv data directory": "/var/www/movieSearchWebsite/tvapi/indexTvShows"
+}
