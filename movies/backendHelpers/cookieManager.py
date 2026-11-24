@@ -34,12 +34,16 @@ class CookieManager:
 		return False
 
 	def cookieHasPrivlige(self, tokenID, authCheck):
+#		print(tokenID, tokenID in self.cookies, self.cookies[tokenID].auth if tokenID in self.cookies else "NULL", authCheck)
 		if (tokenID not in self.cookies):
+			print("Not in here")
 			return False 
-		if (self.cookies[tokenID].expiration > datetime.now()): #deleting old cookies
+#		print(self.cookies[tokenID].expiration, datetime.now())
+		if (self.cookies[tokenID].expiration < datetime.now()): #deleting old cookies
 			del self.cookies[tokenID]
 			return False
 		# only when bitwise & operation equals itself, does it have at least these privliges
+		print("returns: ", ((self.cookies[tokenID].auth & authCheck) == authCheck))
 		return ((self.cookies[tokenID].auth & authCheck) == authCheck)
 
 	def cookieExists(self, tokenID):

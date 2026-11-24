@@ -2,8 +2,8 @@ from .cookieManager import CookieManager
 
 
 class Auth:
-	passes = {
-		'admin': 'AdMiN'
+	passes = { #Look, this is a small thing, I don't care about proper password storage until the thought of exposing this to the internet crosses my mind
+		'admin': 'admin'
 	}
 	perms = {
 		'admin': [CookieManager.AUTH_ADMIN,]

@@ -227,7 +227,7 @@ def getTitle(loc, data):
     return loc[loc.find(" - ")+3:]
 
 @app.route('/api/login', methods = ['POST'])
-def login():
+def apiLogin():
     data = request.form
     username = data.get('username')
     password = data.get('password')
@@ -235,7 +235,7 @@ def login():
     cookie = Auth.loginCookie(CM, username, password, authType)
     if cookie is None:
         return jsonify({"error": "Invalid Credentials"}), 401
-    res = make_response(redirect(url_for('admin')))
+    res = make_response(redirect(url_for('getAdminWebsite')))
     res.set_cookie(
         key = "loginDetails",
         value = cookie.tokenID,
@@ -247,7 +247,7 @@ def login():
     return res, 200
 
 @app.route('/api/logout', methods = ['POST'])
-def logout():
+def apiLogout():
     cookieToken = request.cookies.get('loginDetails')
     CM.deleteCookie(cookieToken)
 
@@ -262,11 +262,15 @@ def logout():
     )
     return res, 200
 
+@app.route("/login", methods = ['GET', 'POST'])
+def login():
+    return render_template("login.html")
+
 @app.route('/admin', methods = ['GET', 'POST'])
 def getAdminWebsite():
     cookieToken = request.cookies.get('loginDetails')
     if not CM.cookieHasPrivlige(cookieToken, CM.AUTH_ADMIN):
-        return render_template("login.html")
+        return redirect(url_for("login"))
     return render_template("testing.html", dynamic_line = "Admin console")
 
 @app.route('/data/get/codecs', methods = ['GET'])

@@ -1,1 +1,4 @@
 for some bizarre reason, not all video files are showing up with the codecs, always add all codecs instead of adding some if it exists
+
+Make the admin console to change the config / reindex
+Maybe add flavor text on hovering over option which is stored in file's comment lines
